@@ -22,21 +22,78 @@
     }
 
     body {
+      position: relative;
       overflow: hidden;
-      background:
-        radial-gradient(circle at center, #f28b12 0%, #d94708 58%, #721307 100%);
+      background: #9a2806;
       font-family: "FangSong", "STFangsong", "仿宋", serif;
     }
 
+    body::before {
+      content: "";
+      position: fixed;
+      z-index: 0;
+      inset: -8%;
+      background: url("./p.jpeg") center / cover no-repeat;
+      filter: blur(38px) saturate(155%) brightness(.9);
+      transform: scale(1.08);
+      opacity: .88;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at center, transparent 42%, rgba(91, 17, 0, .22) 100%);
+      pointer-events: none;
+    }
+
     .stage {
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: 100%;
       display: grid;
       place-items: center;
     }
 
+    .stage::before,
+    .stage::after {
+      content: "";
+      position: fixed;
+      z-index: 2;
+      top: 0;
+      bottom: 0;
+      width: max(0px, calc((100vw - min(100vw, calc(100svh * 4 / 3))) / 2 + 44px));
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .16), rgba(255, 255, 255, .025) 52%, rgba(255, 214, 148, .08));
+      -webkit-backdrop-filter: blur(26px) saturate(175%) brightness(1.04);
+      backdrop-filter: blur(26px) saturate(175%) brightness(1.04);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .42),
+        inset 0 -1px 0 rgba(255, 255, 255, .12);
+    }
+
+    .stage::before {
+      left: 0;
+      border-right: 1px solid rgba(255, 255, 255, .32);
+      -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 52px), transparent 100%);
+      mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 52px), transparent 100%);
+    }
+
+    .stage::after {
+      right: 0;
+      border-left: 1px solid rgba(255, 255, 255, .32);
+      -webkit-mask-image: linear-gradient(to left, #000 0, #000 calc(100% - 52px), transparent 100%);
+      mask-image: linear-gradient(to left, #000 0, #000 calc(100% - 52px), transparent 100%);
+    }
+
     .certificate {
       position: relative;
+      z-index: 1;
       width: min(100vw, calc(100svh * 4 / 3));
       height: min(100svh, calc(100vw * 3 / 4));
       overflow: hidden;
@@ -66,10 +123,11 @@
 
     .content {
       position: absolute;
-      top: 35%;
-      left: 20%;
-      width: 60%;
-      height: 48%;
+      top: 34%;
+      left: 18%;
+      width: 64%;
+      height: 51%;
+      padding-bottom: clamp(58px, 9vmin, 88px);
       color: #351400;
       transform: rotate(-0.18deg);
       text-shadow: 0 1px 0 rgba(255, 255, 255, .26);
@@ -77,9 +135,9 @@
 
     .recipient {
       font-family: "KaiTi", "STKaiti", "楷体", serif;
-      margin: 0 0 clamp(17px, 2.8vmin, 31px);
+      margin: 0 0 clamp(12px, 1.8vmin, 20px);
       text-align: left;
-      font-size: clamp(15px, 2.25vmin, 26px);
+      font-size: clamp(20px, 2.6vmin, 30px);
       font-weight: 900;
       letter-spacing: .03em;
     }
@@ -87,10 +145,10 @@
     .body-text {
       margin: 0;
       text-align: left;
-      text-indent: 2em;
-      font-size: clamp(14px, 1.95vmin, 23px);
+      text-indent: 0;
+      font-size: clamp(17px, 2.2vmin, 26px);
       font-weight: 700;
-      line-height: 1.75;
+      line-height: 1.65;
       letter-spacing: .025em;
     }
 
@@ -104,12 +162,12 @@
 
     .honor {
       font-family: "KaiTi", "STKaiti", "楷体", serif;
-      margin: clamp(9px, 1.5vmin, 17px) 0;
+      margin: clamp(6px, 1vmin, 12px) 0;
       text-align: center;
-      font-size: clamp(26px, 4.6vmin, 55px);
+      font-size: clamp(34px, 5.2vmin, 62px);
       font-weight: 900;
       line-height: 1.12;
-      letter-spacing: .11em;
+      letter-spacing: .08em;
       color: #a30b0b;
       text-shadow:
         0 1px 0 rgba(255, 238, 150, .55),
@@ -119,8 +177,8 @@
     .closing {
       margin: 0;
       text-align: left;
-      text-indent: 2em;
-      font-size: clamp(14px, 1.95vmin, 23px);
+      text-indent: 0;
+      font-size: clamp(17px, 2.2vmin, 26px);
       font-weight: 700;
       line-height: 1.7;
     }
@@ -130,7 +188,7 @@
       left: 0;
       bottom: 0;
       font-family: "FangSong", "STFangsong", "仿宋", serif;
-      font-size: clamp(8px, 1.12vmin, 13px);
+      font-size: clamp(10px, 1.25vmin, 15px);
       font-weight: 700;
       line-height: 1.65;
       color: rgba(75, 28, 0, .74);
@@ -148,7 +206,7 @@
       bottom: 0;
       min-width: 45%;
       text-align: center;
-      font-size: clamp(10px, 1.45vmin, 17px);
+      font-size: clamp(11px, 1.55vmin, 18px);
       font-weight: 700;
       line-height: 1.55;
       color: #5e1d02;
@@ -174,7 +232,7 @@
       background: rgba(255, 217, 94, .04);
       transform: rotate(-15deg);
       font-family: "KaiTi", "STKaiti", "楷体", serif;
-      font-size: clamp(11px, 1.6vmin, 18px);
+      font-size: clamp(12px, 1.75vmin, 20px);
       font-weight: 900;
       line-height: 1.15;
       color: #c80b0b;
@@ -324,6 +382,11 @@
         overflow-y: auto;
       }
 
+      .stage::before,
+      .stage::after {
+        display: none;
+      }
+
       .certificate {
         width: 100vw;
         height: 100svh;
@@ -334,39 +397,40 @@
       }
 
       .content {
-        top: 33%;
-        left: 9%;
-        width: 82%;
-        height: 52%;
+        top: 31%;
+        left: 10%;
+        width: 80%;
+        height: 58%;
+        padding-bottom: clamp(88px, 15svh, 122px);
       }
 
       .recipient {
       font-family: "KaiTi", "STKaiti", "楷体", serif;
-        margin-bottom: clamp(16px, 5vw, 27px);
-        font-size: clamp(15px, 4.2vw, 21px);
+        margin-bottom: clamp(13px, 3.8vw, 20px);
+        font-size: clamp(18px, 4.8vw, 24px);
       }
 
       .body-text,
       .closing {
-        font-size: clamp(14px, 3.8vw, 20px);
+        font-size: clamp(16px, 4.25vw, 22px);
         line-height: 1.65;
       }
 
       .honor {
       font-family: "KaiTi", "STKaiti", "楷体", serif;
-        font-size: clamp(25px, 7.3vw, 42px);
+        font-size: clamp(30px, 8vw, 46px);
       }
 
       .certificate-data {
         max-width: 55%;
-        font-size: clamp(7px, 2.15vw, 11px);
+        font-size: clamp(8px, 2.4vw, 12px);
       }
 
       .issuer {
       font-family: "KaiTi", "STKaiti", "楷体", serif;
         right: -2%;
         min-width: 48%;
-        font-size: clamp(8px, 2.5vw, 13px);
+        font-size: clamp(9px, 2.7vw, 14px);
       }
 
       .stamp {
@@ -374,7 +438,7 @@
         bottom: 7%;
         width: clamp(70px, 21vw, 106px);
         height: clamp(70px, 21vw, 106px);
-        font-size: clamp(10px, 3.4vw, 16px);
+        font-size: clamp(11px, 3.5vw, 17px);
       }
     }
 
@@ -384,8 +448,8 @@
       }
 
       .content {
-        top: 31%;
-        height: 55%;
+        top: 30%;
+        height: 60%;
       }
 
       .sound {
