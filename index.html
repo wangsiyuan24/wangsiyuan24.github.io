@@ -3,118 +3,236 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>wangsiyuan.net网站</title>
-  <style>
-    * { box-sizing: border-box; }
+  <meta
+    name="description"
+    content="wangsiyuan.net 人类身份认证奖状"
+  >
+  <title>人类认证奖状｜wangsiyuan.net</title>
 
-    html, body {
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
       width: 100%;
-      min-height: 100%;
+      height: 100%;
       margin: 0;
     }
 
     body {
-      overflow-x: hidden;
-      color: #9e0808;
-      background: #ee6800;
-      font-family: "STKaiti", "KaiTi", "FangSong", serif;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at center, #f28b12 0%, #d94708 58%, #721307 100%);
+      font-family: "FangSong", "STFangsong", "仿宋", serif;
+    }
+
+    .stage {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
     }
 
     .certificate {
       position: relative;
-      width: 100vw;
-      min-height: 100vh;
-      aspect-ratio: 1200 / 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: clamp(150px, 28vh, 300px) 14vw clamp(135px, 19vh, 210px);
+      width: min(100vw, calc(100svh * 4 / 3));
+      height: min(100svh, calc(100vw * 3 / 4));
+      overflow: hidden;
       background: url("./p.jpeg") center / 100% 100% no-repeat;
-      text-align: center;
       isolation: isolate;
+      box-shadow:
+        0 0 30px rgba(65, 9, 0, .36),
+        0 16px 45px rgba(65, 9, 0, .28);
+    }
+
+    .certificate::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          91deg,
+          rgba(92, 39, 0, .018) 0,
+          rgba(92, 39, 0, .018) 1px,
+          transparent 1px,
+          transparent 5px
+        );
+      mix-blend-mode: multiply;
     }
 
     .content {
-      width: min(720px, 72vw);
-      transform: rotate(-0.5deg);
-      text-shadow: 0 2px 0 rgba(255,255,255,.48);
+      position: absolute;
+      top: 35%;
+      left: 20%;
+      width: 60%;
+      height: 48%;
+      color: #351400;
+      transform: rotate(-0.18deg);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .26);
     }
 
-    .eyebrow {
-      margin: 0 0 8px;
-      font-family: Arial, sans-serif;
-      font-size: clamp(11px, 1.2vw, 17px);
+    .recipient {
+      font-family: "KaiTi", "STKaiti", "楷体", serif;
+      margin: 0 0 clamp(17px, 2.8vmin, 31px);
+      text-align: left;
+      font-size: clamp(15px, 2.25vmin, 26px);
       font-weight: 900;
-      letter-spacing: .22em;
-      color: #5a3300;
+      letter-spacing: .03em;
     }
 
-    h1 {
+    .body-text {
       margin: 0;
-      font-size: clamp(34px, 6vw, 78px);
-      line-height: 1;
-      letter-spacing: .08em;
-    }
-
-    .name {
-      display: inline-block;
-      margin: clamp(15px, 2.3vw, 26px) 0 12px;
-      padding: 0 .2em .08em;
-      border-bottom: 4px solid #b61010;
-      font-size: clamp(30px, 5vw, 66px);
-      font-weight: 900;
-      color: #111;
-    }
-
-    .copy {
-      margin: 0 auto;
-      max-width: 650px;
-      font-size: clamp(16px, 2vw, 27px);
+      text-align: left;
+      text-indent: 2em;
+      font-size: clamp(14px, 1.95vmin, 23px);
       font-weight: 700;
       line-height: 1.75;
-      color: #401600;
+      letter-spacing: .025em;
     }
 
-    .award-time {
-      margin-top: clamp(16px, 2vw, 24px);
-      font: 700 clamp(13px, 1.5vw, 19px)/1.6 Arial, sans-serif;
-      letter-spacing: .08em;
-      color: #7a2500;
-      text-shadow: 0 1px 0 rgba(255,255,255,.35);
+    .turnstile {
+      font-family: Arial, sans-serif;
+      font-weight: 900;
+      color: #e85f12;
+      letter-spacing: 0;
+      -webkit-text-stroke: .45px #7b2600;
     }
 
-    .stamp {
+    .honor {
+      font-family: "KaiTi", "STKaiti", "楷体", serif;
+      margin: clamp(9px, 1.5vmin, 17px) 0;
+      text-align: center;
+      font-size: clamp(26px, 4.6vmin, 55px);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: .11em;
+      color: #a30b0b;
+      text-shadow:
+        0 1px 0 rgba(255, 238, 150, .55),
+        1px 1px 0 rgba(106, 0, 0, .16);
+    }
+
+    .closing {
+      margin: 0;
+      text-align: left;
+      text-indent: 2em;
+      font-size: clamp(14px, 1.95vmin, 23px);
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .certificate-data {
       position: absolute;
-      right: 21%;
-      bottom: 18%;
-      width: clamp(88px, 11vw, 142px);
-      height: clamp(88px, 11vw, 142px);
-      display: grid;
-      place-items: center;
-      border: clamp(4px, .55vw, 7px) double #d20b0b;
-      border-radius: 50%;
-      transform: rotate(-17deg);
-      font: 900 clamp(14px, 1.8vw, 23px)/1.15 Arial, sans-serif;
-      color: #d20b0b;
-      opacity: .82;
-    }
-
-    .serial {
-      position: absolute;
-      left: 16%;
-      bottom: 13%;
-      font: 700 clamp(9px, 1vw, 14px)/1.5 monospace;
-      color: rgba(73, 32, 0, .7);
+      left: 0;
+      bottom: 0;
+      font-family: "FangSong", "STFangsong", "仿宋", serif;
+      font-size: clamp(8px, 1.12vmin, 13px);
+      font-weight: 700;
+      line-height: 1.65;
+      color: rgba(75, 28, 0, .74);
       text-align: left;
     }
 
-    .gc {
-      font-family: Arial, sans-serif;
-      font-weight: 900;
-      color: #f06b18;
-      -webkit-text-stroke: 1px #7b2600;
+    .certificate-data span {
+      color: rgba(136, 28, 5, .92);
     }
 
+    .issuer {
+      font-family: "KaiTi", "STKaiti", "楷体", serif;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      min-width: 45%;
+      text-align: center;
+      font-size: clamp(10px, 1.45vmin, 17px);
+      font-weight: 700;
+      line-height: 1.55;
+      color: #5e1d02;
+    }
+
+    .issuer-name {
+      font-weight: 900;
+      letter-spacing: .03em;
+    }
+
+    .stamp {
+      appearance: none;
+      position: absolute;
+      right: 18%;
+      bottom: 9%;
+      width: clamp(75px, 11vmin, 125px);
+      height: clamp(75px, 11vmin, 125px);
+      display: grid;
+      place-items: center;
+      border: clamp(4px, .55vmin, 7px) double #c80b0b;
+      border-radius: 50%;
+      padding: 0;
+      background: rgba(255, 217, 94, .04);
+      transform: rotate(-15deg);
+      font-family: "KaiTi", "STKaiti", "楷体", serif;
+      font-size: clamp(11px, 1.6vmin, 18px);
+      font-weight: 900;
+      line-height: 1.15;
+      color: #c80b0b;
+      opacity: .78;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: inset 0 0 0 3px rgba(200, 11, 11, .08);
+    }
+
+    .stamp::before,
+    .stamp::after {
+      content: "★";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .65em;
+    }
+
+    .stamp::before {
+      top: .38em;
+    }
+
+    .stamp::after {
+      bottom: .38em;
+    }
+
+    .stamp:hover {
+      opacity: .96;
+    }
+
+    .stamp:focus-visible {
+      outline: 2px solid #8f0000;
+      outline-offset: 5px;
+    }
+
+    .stamp.reapply {
+      animation: reapply .42s ease;
+    }
+
+    @keyframes reapply {
+      0% {
+        transform: rotate(-15deg) scale(1);
+      }
+
+      35% {
+        transform: rotate(-9deg) scale(1.18);
+      }
+
+      68% {
+        transform: rotate(-18deg) scale(.91);
+      }
+
+      100% {
+        transform: rotate(-15deg) scale(1);
+      }
+    }
+
+    /* 音乐按钮保持原来的样式 */
     .sound {
       position: fixed;
       z-index: 30;
@@ -129,7 +247,7 @@
       padding: clamp(9px, 1.2vh, 13px) clamp(18px, 2.4vw, 30px);
       background: #161616;
       color: #fff;
-      font-family: inherit;
+      font-family: "STKaiti", "KaiTi", "FangSong", serif;
       font-size: clamp(14px, 1.4vw, 19px);
       font-weight: 700;
       letter-spacing: .04em;
@@ -158,47 +276,185 @@
       top: -12vh;
       width: 10px;
       height: 22px;
-      opacity: .9;
-      animation: fall linear infinite;
+      opacity: .88;
       pointer-events: none;
+      animation:
+        fall var(--duration, 7s)
+        linear
+        var(--delay, 0s)
+        infinite;
     }
 
     @keyframes fall {
-      to { transform: translate3d(10vw, 120vh, 0) rotate(720deg); }
+      to {
+        transform:
+          translate3d(var(--drift, 10vw), 120vh, 0)
+          rotate(var(--spin, 720deg));
+      }
+    }
+
+    .burst {
+      position: fixed;
+      z-index: 40;
+      width: 9px;
+      height: 15px;
+      pointer-events: none;
+      animation: burst .9s cubic-bezier(.13, .78, .29, 1) forwards;
+    }
+
+    @keyframes burst {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform:
+          translate(
+            calc(-50% + var(--burst-x)),
+            calc(-50% + var(--burst-y))
+          )
+          rotate(var(--burst-spin));
+      }
     }
 
     @media (max-aspect-ratio: 4/3) {
-      .certificate {
-        min-height: 100svh;
-        aspect-ratio: auto;
-        padding: 25vh 12vw 19vh;
-        background-size: cover;
+      body {
+        overflow-y: auto;
       }
 
-      .stamp { right: 14%; bottom: 17%; }
-      .serial { left: 13%; bottom: 12%; }
+      .certificate {
+        width: 100vw;
+        height: 100svh;
+        min-height: 680px;
+        background-size: cover;
+        background-position: center;
+        box-shadow: none;
+      }
+
+      .content {
+        top: 33%;
+        left: 9%;
+        width: 82%;
+        height: 52%;
+      }
+
+      .recipient {
+      font-family: "KaiTi", "STKaiti", "楷体", serif;
+        margin-bottom: clamp(16px, 5vw, 27px);
+        font-size: clamp(15px, 4.2vw, 21px);
+      }
+
+      .body-text,
+      .closing {
+        font-size: clamp(14px, 3.8vw, 20px);
+        line-height: 1.65;
+      }
+
+      .honor {
+      font-family: "KaiTi", "STKaiti", "楷体", serif;
+        font-size: clamp(25px, 7.3vw, 42px);
+      }
+
+      .certificate-data {
+        max-width: 55%;
+        font-size: clamp(7px, 2.15vw, 11px);
+      }
+
+      .issuer {
+      font-family: "KaiTi", "STKaiti", "楷体", serif;
+        right: -2%;
+        min-width: 48%;
+        font-size: clamp(8px, 2.5vw, 13px);
+      }
+
+      .stamp {
+        right: 6%;
+        bottom: 7%;
+        width: clamp(70px, 21vw, 106px);
+        height: clamp(70px, 21vw, 106px);
+        font-size: clamp(10px, 3.4vw, 16px);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .certificate {
+        min-height: 720px;
+      }
+
+      .content {
+        top: 31%;
+        height: 55%;
+      }
+
+      .sound {
+        max-width: calc(100vw - 24px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .confetti,
+      .burst {
+        display: none;
+      }
+
+      .stamp.reapply {
+        animation: none;
+      }
     }
   </style>
 </head>
-<body>
-  <main class="certificate">
-    <section class="content" aria-label="Cloudflare人类认证奖状">
-      <p class="eyebrow">wangsiyuan.net</p>
-      <h1>尊贵的用户</h1>
-      <div class="name">我们验证了您是人类</div>
-      <p class="copy">
-        鉴于您成功点击了那个小方块或者贵公司大发慈悲，<br>
-        <span class="gc">GOOGLE RECAPTCHA</span> 已正式验证您为<br>
-        <strong>「货真价实的人类」</strong>。<br>
-        特发此证，以资鼓励。<br>
-        <small>©2026 wangsiyuan.net   然后这个网站是chatgpt写的</small>
-      </p>
-      <div class="award-time" id="award-time">颁奖时间：加载中...</div>
-    </section>
 
-    <div class="stamp">非机器人<br>特此认证</div>
-    <div class="serial">证书编号：GR-HUMAN-114514<br>检测置信度：大概是真的</div>
-  </main>
+<body>
+  <div class="stage">
+    <main class="certificate">
+      <section
+        class="content"
+        aria-label="Cloudflare Turnstile人类认证奖状"
+      >
+        <p class="recipient">尊敬的访问者：</p>
+
+        <p class="body-text">
+          祝贺您顺利通过
+          <span class="turnstile">Cloudflare Turnstile</span>
+          人机验证。经系统认真审查，您当前未表现出明显的机器人特征，特授予
+        </p>
+
+        <div class="honor">货真价实的人类</div>
+
+        <p class="closing">
+          荣誉称号。特发此状，以资鼓励。
+        </p>
+
+        <div class="certificate-data">
+          证书编号：<span id="serial-number">正在生成……</span><br>
+          人类置信度：<span id="confidence">正在判断……</span>
+        </div>
+
+        <div class="issuer">
+          <div class="issuer-name">
+            wangsiyuan.net<br>
+            人类身份认证委员会
+          </div>
+          <div id="award-date">
+            正在核对人类历法……
+          </div>
+        </div>
+      </section>
+
+      <button
+        class="stamp"
+        id="stamp"
+        type="button"
+        title="点击重新盖章"
+        aria-label="点击重新盖章"
+      >
+        非机器人<br>
+        特此认证
+      </button>
+    </main>
+  </div>
 
   <audio id="bgm" src="./m.mp3" autoplay loop preload="auto"></audio>
   <button class="sound" id="sound" type="button">▶ 播放颁奖音乐</button>
@@ -214,7 +470,10 @@
         button.textContent = '🔇 点击开启声音';
         return;
       }
-      button.textContent = audio.paused ? '▶ 播放颁奖音乐' : '❚❚ 暂停颁奖音乐';
+
+      button.textContent = audio.paused
+        ? '▶ 播放颁奖音乐'
+        : '❚❚ 暂停颁奖音乐';
     }
 
     async function playMusic() {
@@ -226,10 +485,9 @@
       }
     }
 
-    // 带声音的自动播放基本都会被浏览器拦截：
-    // 被拦截时先静音播放（浏览器允许），用户任意操作后再立刻恢复声音。
     async function autoplay() {
       if (await playMusic()) return;
+
       audio.muted = true;
       await playMusic();
       syncLabel();
@@ -237,61 +495,247 @@
 
     function enableSound() {
       if (!audio.muted) return;
+
       audio.muted = false;
       playMusic();
       syncLabel();
     }
 
     let gestureCleared = false;
-    const gestures = ['pointerdown', 'keydown', 'touchstart', 'wheel', 'scroll'];
+
+    const gestures = [
+      'pointerdown',
+      'keydown',
+      'touchstart',
+      'wheel',
+      'scroll'
+    ];
+
     function onFirstGesture(event) {
       if (gestureCleared) return;
-      if (event.target instanceof Element && event.target.closest('.sound')) return;
+
+      if (
+        event.target instanceof Element &&
+        event.target.closest('.sound')
+      ) {
+        return;
+      }
+
       gestureCleared = true;
-      gestures.forEach((type) => window.removeEventListener(type, onFirstGesture));
+
+      gestures.forEach((type) => {
+        window.removeEventListener(type, onFirstGesture);
+      });
+
       enableSound();
     }
-    gestures.forEach((type) => window.addEventListener(type, onFirstGesture, { passive: true }));
+
+    gestures.forEach((type) => {
+      window.addEventListener(type, onFirstGesture, {
+        passive: true
+      });
+    });
 
     button.addEventListener('click', () => {
       if (audio.muted) {
         enableSound();
         return;
       }
-      if (audio.paused) playMusic();
-      else audio.pause();
+
+      if (audio.paused) {
+        playMusic();
+      } else {
+        audio.pause();
+      }
     });
 
     audio.addEventListener('play', syncLabel);
     audio.addEventListener('pause', syncLabel);
     audio.addEventListener('volumechange', syncLabel);
+
     syncLabel();
 
     window.addEventListener('load', autoplay);
+
     window.addEventListener('pageshow', (event) => {
-      if (event.persisted) autoplay();
+      if (event.persisted) {
+        autoplay();
+      }
     });
 
-    const awardTime = document.querySelector('#award-time');
-    function updateAwardTime() {
-      const now = new Date();
-      awardTime.textContent = `颁奖时间：${now.toLocaleDateString('zh-CN')}`;
-    }
-    updateAwardTime();
-    setInterval(updateAwardTime, 1000);
+    const serialNumber = document.querySelector('#serial-number');
+    const confidence = document.querySelector('#confidence');
+    const awardDate = document.querySelector('#award-date');
+    const stamp = document.querySelector('#stamp');
 
-    const colors = ['#f00', '#ffdf00', '#0057ff', '#00a43a', '#ff69b4', '#ff7a00', '#9b00ff', '#ffffff'];
-    for (let i = 0; i < 90; i++) {
-      const piece = document.createElement('i');
-      piece.className = 'confetti';
-      piece.style.left = Math.random() * 100 + 'vw';
-      piece.style.background = colors[i % colors.length];
-      piece.style.width = 6 + Math.random() * 8 + 'px';
-      piece.style.height = 12 + Math.random() * 16 + 'px';
-      piece.style.animationDuration = 4 + Math.random() * 5 + 's';
-      piece.style.animationDelay = -Math.random() * 8 + 's';
-      document.body.appendChild(piece);
+    const colors = [
+      '#f00',
+      '#ffdf00',
+      '#0057ff',
+      '#00a43a',
+      '#ff69b4',
+      '#ff7a00',
+      '#9b00ff',
+      '#ffffff'
+    ];
+
+    function randomInteger(max) {
+      if (window.crypto && window.crypto.getRandomValues) {
+        const value = new Uint32Array(1);
+        window.crypto.getRandomValues(value);
+        return value[0] % max;
+      }
+
+      return Math.floor(Math.random() * max);
     }
+
+    function loadCertificateData() {
+      let certificateData;
+
+      try {
+        certificateData = JSON.parse(
+          sessionStorage.getItem('human-certificate')
+        );
+      } catch (_) {
+        certificateData = null;
+      }
+
+      if (
+        !certificateData ||
+        !certificateData.serial ||
+        !certificateData.confidence
+      ) {
+        certificateData = {
+          serial:
+            'GR-HUMAN-114514-' +
+            String(randomInteger(1000000)).padStart(6, '0'),
+
+          confidence:
+            (96 + Math.random() * 3.99).toFixed(2)
+        };
+
+        try {
+          sessionStorage.setItem(
+            'human-certificate',
+            JSON.stringify(certificateData)
+          );
+        } catch (_) {
+          // 浏览器禁止存储时仍然可以正常显示。
+        }
+      }
+
+      serialNumber.textContent = certificateData.serial;
+      confidence.textContent =
+        Number(certificateData.confidence).toFixed(2) + '%';
+    }
+
+    function updateAwardDate() {
+      const now = new Date();
+
+      awardDate.textContent =
+        now.getFullYear() +
+        '年' +
+        (now.getMonth() + 1) +
+        '月' +
+        now.getDate() +
+        '日';
+    }
+
+    function createFallingConfetti() {
+      const count = window.innerWidth <= 600 ? 26 : 52;
+
+      for (let i = 0; i < count; i++) {
+        const piece = document.createElement('i');
+
+        piece.className = 'confetti';
+        piece.style.left = Math.random() * 100 + 'vw';
+        piece.style.background = colors[i % colors.length];
+        piece.style.width = 5 + Math.random() * 8 + 'px';
+        piece.style.height = 10 + Math.random() * 16 + 'px';
+
+        piece.style.setProperty(
+          '--duration',
+          5 + Math.random() * 5 + 's'
+        );
+
+        piece.style.setProperty(
+          '--delay',
+          -Math.random() * 9 + 's'
+        );
+
+        piece.style.setProperty(
+          '--drift',
+          -16 + Math.random() * 32 + 'vw'
+        );
+
+        piece.style.setProperty(
+          '--spin',
+          (Math.random() > .5 ? 1 : -1) *
+          (540 + Math.random() * 720) +
+          'deg'
+        );
+
+        document.body.appendChild(piece);
+      }
+    }
+
+    function launchStampBurst() {
+      const rect = stamp.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      for (let i = 0; i < 32; i++) {
+        const piece = document.createElement('i');
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 60 + Math.random() * 145;
+
+        piece.className = 'burst';
+        piece.style.left = centerX + 'px';
+        piece.style.top = centerY + 'px';
+        piece.style.background =
+          colors[randomInteger(colors.length)];
+
+        piece.style.setProperty(
+          '--burst-x',
+          Math.cos(angle) * distance + 'px'
+        );
+
+        piece.style.setProperty(
+          '--burst-y',
+          Math.sin(angle) * distance + 'px'
+        );
+
+        piece.style.setProperty(
+          '--burst-spin',
+          -720 + Math.random() * 1440 + 'deg'
+        );
+
+        document.body.appendChild(piece);
+
+        piece.addEventListener(
+          'animationend',
+          () => piece.remove(),
+          { once: true }
+        );
+      }
+    }
+
+    stamp.addEventListener('click', () => {
+      stamp.classList.remove('reapply');
+
+      void stamp.offsetWidth;
+
+      stamp.classList.add('reapply');
+      launchStampBurst();
+
+      window.setTimeout(() => {
+        stamp.classList.remove('reapply');
+      }, 450);
+    });
+
+    loadCertificateData();
+    updateAwardDate();
+    createFallingConfetti();
   </script>
 </body>
 </html>
